@@ -11,7 +11,7 @@ class Club(models.Model):
 		return self.name
 
 class SubTopic(models.Model):
-	club = models.ForeignKey(Club)
+	club = models.ForeignKey(Club, on_delete=models.CASCADE)
 	heading = models.CharField(max_length=40)
 	about = models.TextField()
 	order = models.IntegerField()
@@ -20,7 +20,7 @@ class SubTopic(models.Model):
 		return self.club.name + " | " + self.heading
 
 class Secy(models.Model):
-	club = models.ForeignKey(Club)
+	club = models.ForeignKey(Club, on_delete=models.CASCADE)
 	order = models.IntegerField()
 	name = models.CharField(max_length=30)
 	post = models.CharField(max_length=20)
@@ -35,3 +35,4 @@ class Subscribe(models.Model):
 
 	def __unicode__(self):
 		return self.email
+
